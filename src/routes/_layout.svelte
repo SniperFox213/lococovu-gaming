@@ -14,9 +14,6 @@
 
 	let loaded = false;
 
-	// Importing components
-	import Icon from "../components/Icon.svelte";
-
 	onMount(() => {
 		if ($profile.id == null) {
 			// Let's now check if we have
@@ -31,11 +28,10 @@
 					if (error == "authorizePincode") {
 				
 						if ($page.query.return != null) {
-							storage.set('auth-return', $page.query.return);
-							storage.set('auth-return-query', $page.query.query);
+							storage.set('auth.callback', JSON.stringify({ url: $page.query.return, query: $page.query.query }));
 						};
 
-						goto(`/authorize/pincode?token=${cookies.get('token')}`);
+						goto(`https://lococovu.me/authorize/pincode?token=${cookies.get('token')}&return=${encodeURIComponent('https://gaming.lococovu.me/app')}`);
 						cookies.remove('token', { path: "/" });
 					} else {
 						loaded = true;
