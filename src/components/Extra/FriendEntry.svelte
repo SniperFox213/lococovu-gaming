@@ -25,7 +25,7 @@
       // And now let's get this
       // user's information from our servers
       try {
-        let userProfile = await axios.get(`https://lococovu.me/api/profile/${id}`);
+        let userProfile = await axios.get(`https://api.lococovu.me/profile/${id}`);
         
         // Preparing profile object
         let newProfile  = userProfile.data;

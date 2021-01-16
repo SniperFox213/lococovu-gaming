@@ -2,11 +2,9 @@
   // Importing modules
   
   // Importing stores
-  import profile from "../../stores/profile.js";
   import friends from "../../stores/friends.js";
 
   // Importing components
-  import { Caption } from "../../components/typography";
   import Icon from "../../components/Icon.svelte";
 
   import { Profile } from "../../components/cards";

@@ -15,6 +15,7 @@
 
   // Importing components
   import { Caption } from "../typography";
+  import { Profile } from "../cards";
 
   // currentPage variable
   let currentPage = "index";
@@ -66,15 +67,35 @@
     </button>
   </div>
 
+  <!-- Profile -->
+  <div class="w-full px-4 mb-3 mt-6">
+    <Profile let:account={account} id={$profile.id}>
+      <!-- Subtext -->
+      <!-- <div slot="subtext">
+        <p class="text-sm text-gray-100 ml-1 border-b border-dotted border-gray-100">{ account.email }</p>
+      </div> -->
+
+      <!-- Buttons -->
+      <div slot="buttons" class="flex">
+        <!-- Account Settings -->
+        <button class="w-8 h-8 rounded-md bg-input { !account.loaded ? "opacity-50" : "" } flex justify-center items-center">
+          { #if account.loaded }
+            <Icon name="settings" attrs={{ width: "1rem", height: "1rem", color: "#fff" }} />
+          { /if }
+        </button>
+      </div>
+    </Profile>
+  </div>
+
   <!-- Links -->
-  <div class="mt-3 px-4 w-full relative">
+  <div class="px-4 w-full relative">
     { #each pages.filter((x) => x.id != null) as page }
-      <div class="w-full flex items-center rounded-md { currentPage == page.id ? "bg-icon-button" : "" } opacity-80 py-3 px-4 my-2 relative">
+      <div on:click={() => goto(page.href)} class="cursor-pointer w-full flex items-center rounded-md { currentPage == page.id ? "bg-icon-button" : "" } opacity-80 py-3 px-4 my-2 relative">
         <!-- Icon -->
         <Icon name="{ page.icon }" attrs={{ width: "1.2rem", height: "1.2rem", color: "#fff" }} />
         
         <!-- Text -->
-        <Caption opacity={ currentPage == page.id } classes="ml-2">{ page.title }</Caption>
+        <Caption opacity={ currentPage != page.id } classes="ml-2">{ page.title }</Caption>
 
         <!-- Notifications -->
         { #if page.notifications != null }
