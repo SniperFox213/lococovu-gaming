@@ -14,6 +14,8 @@
   import Logotype from "../../../Branding/Logotype/index.svelte";
   import MobileMenu from "../components/MobileMenu.landing.svelte";
 
+  import Popover from "svelte-popover";
+
   // Variable, that determines
   // whatever mobile menu opened
   // or no.
@@ -31,7 +33,7 @@
 
 <header style="z-index: 1;" class="w-full fixed top-0">
   <!-- Global Header -->
-  <div class="w-full h-6 bg-black opacity-95 flex justify-between items-center">
+  <div class="w-full h-6 bg-input flex justify-between items-center">
     <!-- Services -->
     <div class="flex items-center">
       <!-- Small Logotype -->
@@ -44,11 +46,69 @@
 
     <!-- Account -->
     <div class="pr-3 flex items-center">
-      <button class="text-gray-100">
-        <Icon name="grid" attrs={{ width: ".85rem", height: ".85rem", color: "currentColor" }} />
-      </button>
+      <Popover arrow={false} placement="bottom-end">
+        <button slot="target" class="text-gray-100">
+          <Icon name="grid" attrs={{ width: ".85rem", height: ".85rem", color: "currentColor" }} />
+        </button>
+
+        <div slot="content" class="w-64 relative bg-white py-4">
+          <!-- Title -->
+          <h2 class="text-xl text-black font-medium px-4">Сервисы</h2>
+          <p class="text-xs text-gray-900 opacity-80 px-4">Другие сервисы и сайты, разрабатываемые нами же.</p>
+          
+          <!-- List -->
+          <div class="w-full flex flex-wrap my-2 px-4">
+            
+            <!-- Entry -->
+            <!-- @pawcapsu -->
+            <div class="w-full relative my-2 flex items-center border-b border-gray-200 pb-4">
+              <!-- Icon -->
+              <div class="h-12 w-12 bg-input rounded-md flex justify-center items-center relative">
+                <img class="w-2/5" src="https://res.cloudinary.com/lococovu-cdn/image/upload/v1610810215/logotypes/pawcapsu-white-small.svg" alt="">
+              </div>
+
+              <!-- Texts -->
+              <div class="ml-3">
+                <h2 class="text-base text-black font-medium">Пакапсу</h2>
+                <p class="text-xs text-gray-900 opacity-90">Социальная сеть с лапками</p>
+              </div>
+            </div>
+
+            <!-- Entry -->
+            <!-- @odzi -->
+            <div class="w-full relative my-2 flex items-center">
+              <!-- Icon -->
+              <div style="background-color: #FBAB7E; background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);" class="h-12 w-12 rounded-md flex justify-center items-center relative">
+                <img class="w-2/5" src="https://res.cloudinary.com/lococovu-cdn/image/upload/v1610999988/logotypes/odzi-dog-small-white.svg" alt="">
+              </div>
+
+              <!-- Texts -->
+              <div class="ml-3">
+                <h2 class="text-base text-black font-medium">Одзи</h2>
+                <p class="text-xs text-gray-900 opacity-90">Всё для Собачников</p>
+              </div>
+            </div>
+
+            <!-- Other -->
+            <div class="w-full relative my-2 flex items-center opacity-70 py-2 border border-dotted rounded-md border-gray-400">
+              <!-- Icon -->
+              <div class="h-12 w-12 rounded-md flex justify-center items-center relative">
+                <Icon name="list" attrs={{ class: "w-2/5", color: "#000" }} />
+              </div>
+
+              <!-- Texts -->
+              <div class="ml-3">
+                <h2 class="text-base text-black font-medium">Другие</h2>
+                <p class="text-xs text-gray-900 opacity-90">Пока что тут пусто...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Popover>
       
-      <button class="text-gray-100 flex items-center ml-3">
+      <button on:click={(e) => {
+        window.location.href = `https://lococovu.me/authorize?return=${encodeURIComponent(`https://gaming.lococovu.me/${$page.path}`)}&query=${window.location.search}`;
+      }} class="text-gray-100 flex items-center ml-3">
         <!-- Icon -->
         <Icon name="user" attrs={{ width: ".85rem", height: ".85rem", color: "currentColor" }} />
         

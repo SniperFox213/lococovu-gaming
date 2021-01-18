@@ -7,6 +7,8 @@
   import Background from "../components/Layout/Background.svelte";
 
   import PageTransition from "../components/Loader/PageTransition.svelte";
+
+  import { Caption } from "../components/typography";
 </script>
 
 <!-- Page Transition Component && Page Background -->
@@ -41,8 +43,35 @@
     </div>
   </section>
 
+  <!-- Suggestion -->
+  <div class="w-full py-12 bg-red-500 flex flex-col items-center justify-center">
+    <h2 class="text-3xl text-white font-medium">Ну а пока вы ждёте релиза этого всего...</h2>
+    <p class="text-xl text-white font-medium opacity-80">...вы можете посмотреть на то, что мы тут напланировали!</p>
+  </div>
+  
   <!-- Popular Games Section -->
-  <section class="w-full h-screen bg-gray-200">
-    
+  <section class="w-full h-screen bg-gray-200 py-6">
+    <!-- List Header -->
+    <div class="w-full px-12 flex justify-between items-center py-4">
+      <!-- Title -->
+      <div class="w-3/5 relative">
+        <h2 class="text-3xl text-black font-bold">Библиотека игр</h2>
+        <p class="text-md text-gray-900 opacity-80">При старте на нашей платформе будет во-о-о-от столько игр. Но не беспокойтесь - мы будем максимально быстро пополнять эту библиотеку новыми шедеврами!</p>
+      </div>
+
+      <!-- Button -->
+      <button class="rounded-md bg-input px-4 h-8">
+        <Caption opacity={false}>Посмотреть всю библиотеку</Caption>
+      </button>
+    </div>
+
+    <!-- List Itself -->
+    <div class="w-full h-full flex flex-wrap">
+
+    </div>
   </section>
+
+  <!-- Features Section -->
+
+  <!-- Challange -->
 </main>
