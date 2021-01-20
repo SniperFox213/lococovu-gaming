@@ -79,6 +79,47 @@
   </div>
 </div>
 
+<!-- Ads -->
+<div class="w-full relative mb-6 px-2">
+  <div class="pt-40% relative w-full">
+    <div class="absolute inset-0 w-full h-full rounded-md border border-dashed border-gray-500 p-3">
+      <!-- Tags -->
+      <div class="w-full flex justify-between items-center">
+        <div class="flex items-center">
+          <!-- Links -->
+
+          <!-- Pawcapsu -->
+          <button class="mx-4 flex items-center">
+            <!-- Logotype -->
+            <img class="w-5 h-5" src="https://res.cloudinary.com/lococovu-cdn/image/upload/v1610810215/logotypes/pawcapsu-white-small.svg" alt="Pawcapsu Logotype">
+
+            <!-- Text -->
+            <p class="text-base text-white ml-2 font-medium">Pawcapsu</p>
+          </button>
+
+          <!-- Lococovu Comics -->
+          <button class="mx-4 flex items-center opacity-50">
+            <!-- Logotype -->
+            <img class="w-4 h-4" src="./logotype/small-white.svg" alt="Lococovu Logotype">
+
+            <!-- Text -->
+            <p class="text-sm text-white ml-2 font-medium">Comics</p>
+          </button>
+
+          <!-- Lococovu Cloud -->
+          <button class="mx-4 opacity-50 flex items-center">
+            <!-- Logotype -->
+            <img class="w-4 h-4" src="./logotype/small-white.svg" alt="Lococovu Logotype">
+
+            <!-- Text -->
+            <p class="text-sm text-white ml-2 font-medium">Cloud</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Game Library -->
 <div class="w-full border-b-2 border-solid border-indigo-400 text-left pb-2">
   <h1 class="text-2xl text-white opacity-75 font-bold">Популярное</h1>

@@ -49,14 +49,18 @@ function store() {
             });
           };
 
+          console.log(data);
+
           // Second Token Check
           if (!data.isToken) {
+            console.lo
             reject({ error: "!IsToken" });
           };
 
           // Let's check if this account
           // have pincode authorization
           if (data.security.pincode != null) {
+            console.log("CHECK SECURITY CODE");
             // Let's check if we have AuthorizedToken saved
             // somewhere in our local-storage
             let authorizedToken = attrs.ignoreSavedPincode ? null : storage.get(`AT-${data.id}`);
@@ -65,9 +69,11 @@ function store() {
             // through internal api
             axios.get(`${config.apiURI.internal}/security/code/${authorizedToken}`)
             .then((response) => {
+              console.log("SECURITY CODE !ERROR");
               done();
             })
             .catch(() => {
+              console.log("SECURITY CODE ERROR");
               if (!attrs.ignoreSavedPincode) storage.remove(`AT-${authorizedToken}`);
               
               reject({ error: "authorizePincode", id: data.id });

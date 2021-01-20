@@ -25,7 +25,7 @@
 				.then(() => {
 					loaded = true;
 				}).catch((error) => {
-					if (error == "authorizePincode") {
+					if (error.error == "authorizePincode") {
 				
 						if ($page.query.return != null) {
 							storage.set('auth.callback', JSON.stringify({ url: $page.query.return, query: $page.query.query }));
