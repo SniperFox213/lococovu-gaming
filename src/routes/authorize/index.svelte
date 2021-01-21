@@ -2,6 +2,18 @@
   // Importing modules
   import { goto } from "@sapper/app";
   import { onMount } from "svelte";
+  
+  import Cookie from "cookie-universal";
+  const cookies = Cookie();
+
+  import storage from "local-storage";
+
+  // Importing stores
+  import { stores } from "@sapper/app";
+  const { page } = stores();
+
+  // Importing actions
+  import getProfile from "../../actions/profile/getProfile.action";
 
   // Importing components
   import Spinner from "../../components/Loader/Spinner.svelte";
@@ -9,7 +21,28 @@
 
   // Redirecting user to needed page
   onMount(() => {
-    goto(`https://lococovu.me/authorize?return=${encodeURIComponent('https://gaming.lococovu.me/app')}`);
+    // Checking something...
+    if ($page.query.type == "updateSecurityCode") {
+      let token = $page.query.token;
+      let securityCode = $page.query.securityCode;
+
+      if (token == null) token = cookies.get('token');
+
+      // And now let's update this security code
+      // and then let's redirect our user to
+      // main application
+      getProfile(token)
+      .then((response) => {
+        // Let's save this securityCode to our
+        // localStorage and let's send user
+        // to application page
+        storage.set(`AT-${response.id}`, securityCode);
+
+        window.location.href = "/app";
+      });
+    } else {
+      goto(`https://lococovu.me/authorize?return=${encodeURIComponent('https://gaming.lococovu.me/app')}`);
+    };
   });
 </script>
 

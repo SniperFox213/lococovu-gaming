@@ -31,8 +31,7 @@
 							storage.set('auth.callback', JSON.stringify({ url: $page.query.return, query: $page.query.query }));
 						};
 
-						goto(`https://lococovu.me/authorize/pincode?token=${cookies.get('token')}&return=${encodeURIComponent('https://gaming.lococovu.me/app')}`);
-						cookies.remove('token', { path: "/" });
+						goto(`https://lococovu.me/authorize/pincode?type=confirmation&query=${encodeURIComponent('?type=updateSecurityCode')}&token=${cookies.get('token')}&return=${encodeURIComponent('https://gaming.lococovu.me/authorize')}`);
 					} else {
 						loaded = true;
 					};
