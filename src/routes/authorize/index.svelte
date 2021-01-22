@@ -46,7 +46,9 @@
         // to application page
         storage.set(`AT-${response.id}`, securityCode);
 
-        window.location.href = "/app";
+        setTimeouut(() => {
+          window.location.href = "/app";
+        }, 1000);
       });
     } else {
       goto(`https://lococovu.me/authorize?return=${encodeURIComponent('https://gaming.lococovu.me/app')}`);
