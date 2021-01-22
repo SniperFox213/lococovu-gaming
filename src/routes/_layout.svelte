@@ -26,7 +26,11 @@
 					loaded = true;
 				}).catch((error) => {
 					if (error.error == "authorizePincode") {
-						if (!$page.path.includes('authorize')) goto(`https://lococovu.me/authorize/pincode?type=confirmation&query=${encodeURIComponent('?type=updateSecurityCode')}&token=${cookies.get('token')}&return=${encodeURIComponent('https://gaming.lococovu.me/authorize')}`);
+						if ($page.path.includes('authorize')) {
+							loaded = true;
+						} else {
+							goto(`https://lococovu.me/authorize/pincode?type=confirmation&query=${encodeURIComponent('?type=updateSecurityCode')}&token=${cookies.get('token')}&return=${encodeURIComponent('https://gaming.lococovu.me/authorize')}`);
+						};
 					} else {
 						loaded = true;
 					};
