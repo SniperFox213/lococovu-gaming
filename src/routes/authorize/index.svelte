@@ -41,7 +41,7 @@
         // localStorage and let's send user
         // to application page
         storage.set(`AT-${response.id}`, securityCode);
-
+        
         window.location.href = "/app";
       });
     } else {
