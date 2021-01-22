@@ -23,6 +23,8 @@
   onMount(() => {
     // Checking something...
     if ($page.query.type == "updateSecurityCode") {
+      console.log("UPDATE SECURITY CODE");
+
       let token = $page.query.token;
       let securityCode = $page.query.securityCode;
 
@@ -33,6 +35,12 @@
       // main application
       getProfile(token)
       .then((response) => {
+        console.log("SAVE CODE");
+        console.log(securityCode);
+
+        console.log("PROFILE:");
+        console.log(response);
+
         // Let's save this securityCode to our
         // localStorage and let's send user
         // to application page
