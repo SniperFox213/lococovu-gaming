@@ -3,6 +3,8 @@
   import { goto } from "@sapper/app";
   import { onMount } from "svelte";
   
+  import moment from "moment";
+
   import Cookie from "cookie-universal";
   const cookies = Cookie();
 
@@ -23,8 +25,6 @@
   onMount(() => {
     // Checking something...
     if ($page.query.type == "updateSecurityCode") {
-      console.log("UPDATE SECURITY CODE");
-
       let token = $page.query.token;
       let securityCode = $page.query.securityCode;
 
@@ -35,11 +35,7 @@
       // main application
       getProfile(token)
       .then((response) => {
-        console.log("SAVE CODE");
-        console.log(securityCode);
-
-        console.log("PROFILE:");
-        console.log(response);
+        if (cookies.get('token') != token) cookies.set('token', token, { path: "/", domain: ".lococovu.me", expires: moment().add('1', 'year').toDate() })
 
         // Let's save this securityCode to our
         // localStorage and let's send user
