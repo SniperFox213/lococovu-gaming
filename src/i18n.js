@@ -5,5 +5,5 @@ register('ru', () => import('./locales/ru.json'));
 
 init({
   fallbackLocale: 'ru',
-  initialLocale: getLocaleFromNavigator(),
+  initialLocale: getLocaleFromNavigator() || "ru",
 });
